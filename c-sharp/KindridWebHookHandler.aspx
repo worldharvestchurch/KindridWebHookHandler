@@ -170,24 +170,6 @@
     #endregion RESPONSE SUPPORT
 
 
-    /// <summary>
-    /// Returns an HMACSHA1 signature of strUrlAndRequest using strApiSecret as the key
-    /// </summary>
-    /// <param name="strUrlAndRequest">Concatenated string of WebHook URL and raw body of the request.</param>
-    /// <param name="strApiSecret">API Secret to be used as the key in the HMACSHA-1 encode.</param>
-    public static string HMACSHA1(string strUrlAndRequest, string strApiSecret)
-    {
-        Encoding ascii = Encoding.ASCII;
-
-        HMACSHA1 hmac = new HMACSHA1(ascii.GetBytes(strApiSecret));
-        hmac.Initialize();
-
-        byte[] data = ascii.GetBytes(strUrlAndRequest);
-        byte[] hash = hmac.ComputeHash(data);
-
-        return BitConverter.ToString(hash).Replace("-", "").ToLower();
-    }
-
 
     protected void Page_Load(object sender, EventArgs e)
     {
