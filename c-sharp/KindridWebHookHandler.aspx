@@ -292,15 +292,18 @@
 
             string strRemoteAddr = Request.ServerVariables["REMOTE_ADDR"].ToString();
 
-            DataAccessLayer DAL = DataAccessLayer.GetInstance();
-            int intRowID = DAL.KindridDonationAdd(json, strRemoteAddr, kindridGift.status, kindridGift.amount, kindridGift.date, kindridGift.id,
-                kindridGift.designation, kindridGift.to, kindridGift.donor.phone, kindridGift.donor.name, kindridGift.donor.address, kindridGift.donor.city,
-                kindridGift.donor.state, kindridGift.donor.zip, kindridGift.donor.id, kindridGift.donor.email, strDonorTags, kindridGift.donor.tags._campus,
-                kindridGift.source_type, kindridGift.giving_type, strKindridSignatureHeader, strDataGeneratedSignature);
+            int intRowID = 0; 
+            //DataAccessLayer DAL = DataAccessLayer.GetInstance();
+            //int intRowID = DAL.KindridDonationAdd(json, strRemoteAddr, kindridGift.status, kindridGift.amount, kindridGift.date, kindridGift.id,
+                //kindridGift.designation, kindridGift.to, kindridGift.donor.phone, kindridGift.donor.name, kindridGift.donor.address, kindridGift.donor.city,
+                //kindridGift.donor.state, kindridGift.donor.zip, kindridGift.donor.id, kindridGift.donor.email, strDonorTags, kindridGift.donor.tags._campus,
+                //kindridGift.source_type, kindridGift.giving_type, strKindridSignatureHeader, strDataGeneratedSignature);
 
             
             // Was there an error?
-            if (DAL.ErrorFlag)
+            //if (DAL.ErrorFlag)
+            // Change this (true) to your own check for errors after attempting to store the record.
+            if (true) 
             {
                 WriteWebHookError(KindridWebHookError.DATA_ACCESS_LAYER_ERROR, "DAL error. Save unsuccessful.  Message: " + DAL.DetailedMessage + "");
                 return;
